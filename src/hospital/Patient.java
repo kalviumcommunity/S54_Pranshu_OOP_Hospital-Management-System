@@ -14,6 +14,10 @@ public class Patient {
       this.medicalHistory += "\n" + record;
   }
 
+  public String getName() {
+    return name;
+}
+
   public String viewPatientDetails() {
       return "Name: " + name + "\nID: " + id + "\nMedical History: " + medicalHistory;
   }

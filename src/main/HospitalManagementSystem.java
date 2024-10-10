@@ -2,41 +2,56 @@ package main;
 
 import hospital.Doctor;
 import hospital.Patient;
+import java.util.Scanner;
 
 public class HospitalManagementSystem {
     public static void main(String[] args) {
-      
-        // Create an array of Patient objects
-        Patient[] patients = new Patient[5];  
+        Scanner scanner = new Scanner(System.in);
 
-        // Initializing each Patient object in the array
-        patients[0] = new Patient("John Doe", 1, "No previous records");
-        patients[1] = new Patient("Jane Smith", 2, "Allergic to penicillin");
-        patients[2] = new Patient("Michael Johnson", 3, "Diabetic, high blood pressure");
-        patients[3] = new Patient("Emily Davis", 4, "No known allergies, past surgery");
-        patients[4] = new Patient("Chris Brown", 5, "Asthmatic");
+       
+        System.out.print("Enter the number of patients: ");
+        int numPatients = scanner.nextInt();
+        scanner.nextLine(); 
 
+        // Dynamically create an array of Patient objects based on user input
+        Patient[] patients = new Patient[numPatients];
 
-        Doctor doctor1 = new Doctor("Dr. Smith", "Cardiology", "Monday to Friday");
+        // Loop to collect patient data
+        for (int i = 0; i < numPatients; i++) {
+            System.out.println("Enter details for Patient " + (i + 1) + ":");
 
-        // Add medical records to each patient
-        patients[0].addMedicalRecord("Check-up on 01/09/2024");
-        patients[1].addMedicalRecord("Allergy test on 02/09/2024");
-        patients[2].addMedicalRecord("Diabetes check on 03/09/2024");
-        patients[3].addMedicalRecord("Post-surgery follow-up on 04/09/2024");
-        patients[4].addMedicalRecord("Asthma test on 05/09/2024");
+            System.out.print("Name: ");
+            String name = scanner.nextLine();
 
-        // View patient details for each patient in the array
-        for (Patient patient : patients) {
-            System.out.println(patient.viewPatientDetails());
-            System.out.println();  
+            System.out.print("ID: ");
+            int id = scanner.nextInt();
+            scanner.nextLine(); 
+
+            System.out.print("Initial Medical Record: ");
+            String medicalRecord = scanner.nextLine();
+
+            // Dynamically allocate each Patient object in the array
+            patients[i] = new Patient(name, id, medicalRecord);
         }
 
-        // Scheduling appointments for the patients with the doctor
-        doctor1.scheduleAppointment("Check-up with John Doe on 01/09/2024");
-        doctor1.scheduleAppointment("Allergy test with Jane Smith on 02/09/2024");
-        doctor1.scheduleAppointment("Diabetes check with Michael Johnson on 03/09/2024");
-        doctor1.scheduleAppointment("Post-surgery follow-up with Emily Davis on 04/09/2024");
-        doctor1.scheduleAppointment("Asthma test with Chris Brown on 05/09/2024");
+        // Create a Doctor object
+        Doctor doctor1 = new Doctor("Dr. Smith", "Cardiology", "Monday to Friday");
+
+        // Add medical records to each patient and view patient details
+        for (int i = 0; i < numPatients; i++) {
+            
+            patients[i].addMedicalRecord("Appointment on " + (i + 1) + "/09/2024");
+
+            // View patient details
+            System.out.println(patients[i].viewPatientDetails());
+            System.out.println(); 
+        }
+
+        // Schedule appointments for the patients with the doctor
+        for (int i = 0; i < numPatients; i++) {
+            doctor1.scheduleAppointment("Appointment with " + patients[i].getName() + " on " + (i + 1) + "/09/2024");
+        }
+
+        scanner.close();
     }
 }
