@@ -1,53 +1,43 @@
 package hospital;
 
 public class Patient {
+    // Private attributes
     private String name;
     private int id;
     private String medicalRecord;
 
-    // Static variable to keep track of total number of patients
-    private static int totalPatients = 0;
+    // Default constructor
+    public Patient() {
+        this.name = "Unknown";
+        this.id = 0;
+        this.medicalRecord = "No medical record available";
+        System.out.println("Default constructor called for Patient");
+    }
 
-    // Constructor
+    // Parameterized constructor
     public Patient(String name, int id, String medicalRecord) {
         this.name = name;
         this.id = id;
         this.medicalRecord = medicalRecord;
-        totalPatients++;
+        System.out.println("Parameterized constructor called for Patient: " + name);
     }
 
-    // Accessor (Getter) for name
+    // Accessor and mutator for name (demonstrating encapsulation)
     public String getName() {
         return name;
     }
 
-    // Mutator (Setter) for name
     public void setName(String name) {
         this.name = name;
     }
 
-    // Accessor (Getter) for medicalRecord
-    public String getMedicalRecord() {
-        return medicalRecord;
-    }
-
-    // Mutator (Setter) for medicalRecord
-    public void setMedicalRecord(String medicalRecord) {
-        this.medicalRecord = medicalRecord;
-    }
-
-    // Static member function to get total number of patients
-    public static int getTotalPatients() {
-        return totalPatients;
-    }
-
-    // Add a new medical record
+    // Public method to add a medical record
     public void addMedicalRecord(String record) {
         this.medicalRecord += "\n" + record;
     }
 
-    // View patient details
+    // Public method to view patient details
     public String viewPatientDetails() {
-        return "Patient Name: " + name + "\nID: " + id + "\nMedical Record: " + medicalRecord;
+        return "Patient ID: " + id + "\nName: " + name + "\nMedical Record: " + medicalRecord;
     }
 }

@@ -1,58 +1,34 @@
 package hospital;
 
 public class Doctor {
+    // Private attributes
     private String name;
     private String specialty;
     private String availability;
 
-    // Static variable to keep track of total number of doctors
-    private static int totalDoctors = 0;
+    // Default constructor
+    public Doctor() {
+        this.name = "Unknown Doctor";
+        this.specialty = "General";
+        this.availability = "Unknown";
+        System.out.println("Default constructor called for Doctor");
+    }
 
-    // Constructor
+    // Parameterized constructor
     public Doctor(String name, String specialty, String availability) {
         this.name = name;
         this.specialty = specialty;
         this.availability = availability;
-        totalDoctors++;
+        System.out.println("Parameterized constructor called for Doctor: " + name);
     }
 
-    // Accessor (Getter) for name
-    public String getName() {
-        return name;
-    }
-
-    // Mutator (Setter) for name
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    // Accessor (Getter) for specialty
-    public String getSpecialty() {
-        return specialty;
-    }
-
-    // Mutator (Setter) for specialty
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
-    }
-
-    // Static member function to get total number of doctors
-    public static int getTotalDoctors() {
-        return totalDoctors;
-    }
-
-    // Accessor (Getter) for availability
-    public String getAvailability() {
-        return availability;
-    }
-
-    // Mutator (Setter) for availability
-    public void setAvailability(String availability) {
-        this.availability = availability;
-    }
-
-    // Schedule an appointment
+    // Public method to schedule an appointment
     public void scheduleAppointment(String appointmentDetails) {
-        System.out.println("Appointment scheduled: " + appointmentDetails);
+        System.out.println("Appointment scheduled with " + name + ": " + appointmentDetails);
+    }
+
+    // Public method to view doctor details
+    public String viewDoctorDetails() {
+        return "Doctor Name: " + name + "\nSpecialty: " + specialty + "\nAvailability: " + availability;
     }
 }
