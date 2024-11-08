@@ -13,15 +13,30 @@ public class Patient {
         this.name = name;
         this.id = id;
         this.medicalRecord = medicalRecord;
-        totalPatients++;  // Increment the static variable when a new patient is created
+        totalPatients++;
     }
 
-    // Getter for name
+    // Accessor (Getter) for name
     public String getName() {
         return name;
     }
 
-    // Getter for total patients (static method)
+    // Mutator (Setter) for name
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Accessor (Getter) for medicalRecord
+    public String getMedicalRecord() {
+        return medicalRecord;
+    }
+
+    // Mutator (Setter) for medicalRecord
+    public void setMedicalRecord(String medicalRecord) {
+        this.medicalRecord = medicalRecord;
+    }
+
+    // Static member function to get total number of patients
     public static int getTotalPatients() {
         return totalPatients;
     }
