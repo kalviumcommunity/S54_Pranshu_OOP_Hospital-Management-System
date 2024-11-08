@@ -13,12 +13,42 @@ public class Doctor {
         this.name = name;
         this.specialty = specialty;
         this.availability = availability;
-        totalDoctors++;  // Increment the static variable when a new doctor is created
+        totalDoctors++;
     }
 
-    // Getter for total doctors (static method)
+    // Accessor (Getter) for name
+    public String getName() {
+        return name;
+    }
+
+    // Mutator (Setter) for name
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Accessor (Getter) for specialty
+    public String getSpecialty() {
+        return specialty;
+    }
+
+    // Mutator (Setter) for specialty
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
+    }
+
+    // Static member function to get total number of doctors
     public static int getTotalDoctors() {
         return totalDoctors;
+    }
+
+    // Accessor (Getter) for availability
+    public String getAvailability() {
+        return availability;
+    }
+
+    // Mutator (Setter) for availability
+    public void setAvailability(String availability) {
+        this.availability = availability;
     }
 
     // Schedule an appointment
