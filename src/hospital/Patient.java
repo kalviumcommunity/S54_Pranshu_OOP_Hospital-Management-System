@@ -41,3 +41,4 @@ public class Patient {
         return "Patient ID: " + id + "\nName: " + name + "\nMedical Record: " + medicalRecord;
     }
 }
+
